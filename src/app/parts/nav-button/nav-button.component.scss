@@ -52,7 +52,7 @@ button {
         }
 
         .dot-0-anim {
-            animation: navButtonAnimDot0 .1s ease;
+            animation: navButtonAnimDot0 .1s ease, rgbText 15s infinite;
             aspect-ratio: none;
             border-radius: 50px;
 
@@ -61,28 +61,30 @@ button {
             width: calc(100% + 4px);
             height: 4px;
             left: 50%;
+            border-color: $highlight-color;
         }
         
         .dot-1-anim {
-            animation: navButtonAnimDot1-3-5-7 .1s ease;
+            animation: navButtonAnimDot1-3-5-7 .1s ease, rgbText 5s infinite;
         }
         .dot-1-hover {
             width: 75%;
         }
 
         .dot-2-anim {
-            animation: navButtonAnimDot2 .1s ease;
+            animation: navButtonAnimDot2 .1s ease, rgbText 15s infinite;
             aspect-ratio: none;
             border-radius: 50px;
         }
         .dot-2-hover {
             height: calc(100% + 4px);
             top: 50%;
+            border-color: $highlight-color;
         }
 
                 
         .dot-3-anim {
-            animation: navButtonAnimDot1-3-5-7 .1s ease;
+            animation: navButtonAnimDot1-3-5-7 .1s ease, rgbText 5s infinite;
         }
         .dot-3-hover {
             width: 75%;
@@ -90,19 +92,19 @@ button {
 
         .dot-4-anim {
             width: 225%;
-            animation: navButtonAnimCenter .2s ease;
+            animation: navButtonAnimCenter .2s ease, rgbText 20s infinite;
         }
 
                 
         .dot-5-anim {
-            animation: navButtonAnimDot1-3-5-7 .1s ease;
+            animation: navButtonAnimDot1-3-5-7 .1s ease, rgbText 5s infinite;
         }
         .dot-5-hover {
             width: 75%;
         }
 
         .dot-6-anim {
-            animation: navButtonAnimDot6 .1s ease;
+            animation: navButtonAnimDot6 .1s ease, rgbText 15s infinite;
             aspect-ratio: none;
             border-radius: 50px;
         }
@@ -110,17 +112,18 @@ button {
             height: calc(100% + 4px);
             width: 4px;
             top: 50%;
+            border-color: $highlight-color;
         }
             
         .dot-7-anim {
-            animation: navButtonAnimDot1-3-5-7 .1s ease;
+            animation: navButtonAnimDot1-3-5-7 .1s ease, rgbText 5s infinite;
         }
         .dot-7-hover {
             width: 75%;
         }
 
         .dot-8-anim {
-            animation: navButtonAnimDot8 .1s ease;
+            animation: navButtonAnimDot8 .1s ease, rgbText 15s infinite;
             aspect-ratio: none;
             border-radius: 50px;
         }
@@ -128,6 +131,7 @@ button {
             width: calc(100% + 4px);
             height: 4px;
             left: 50%;
+            border-color: $highlight-color;
         }
     }
 

@@ -1,3 +1,5 @@
+@import '../../styles/variables/color.scss';
+
 // NavButton Animations
 @keyframes navButtonAnimCenter {
     90% {
@@ -69,8 +71,17 @@
 @keyframes rgbText {
     @for $i from 0 through 10 {
         #{percentage($i * (1 / 10))} {
-            color: hsla(random(365), 60, 60, 1);
+            border-color: hsla(random(365), 60, 60, 1);
         }
+    }
+}
+
+@keyframes separator {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
     }
 }
 
@@ -87,6 +98,38 @@
     100% {
         left: -5%;
         width: 5px;
+    }
+}
+
+@keyframes navIndicatorActive {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    40% {
+
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    50% {
+        transform: scale3d(1.15, 0.85, 1);
+    }
+
+    65% {
+        transform: scale3d(0.95, 1.05, 1);
+    }
+    
+    75% {
+        transform: scale3d(1.05, 0.95, 1);
+    }
+
+    100% {
+        width: 8px;
     }
 }
 
