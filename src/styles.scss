@@ -1,4 +1,7 @@
+@import './app/styles/variables/color.scss';
+
 body {
     margin: 0;
     padding: 0;
+    background-color: $background-color;
 }
