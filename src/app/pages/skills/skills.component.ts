@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '../../services/language/language.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-skills',
@@ -8,5 +10,18 @@ import { Component } from '@angular/core';
   styleUrl: './skills.component.scss'
 })
 export class SkillsComponent {
+  languageService: LanguageService = inject(LanguageService);
 
+  private lnaguageSubcription!: Subscription;
+  titleText: string = '';
+
+  ngOnInit(): void {
+      this.lnaguageSubcription = this.languageService.language$.subscribe((language) => {
+        this.titleText = language == 'fr' ? `Mes Compétences` : `My Skills`;
+      })
+  }
+
+  ngOnDestroy(): void {
+      this.lnaguageSubcription.unsubscribe();
+  }
 }

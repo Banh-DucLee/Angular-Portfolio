@@ -1,0 +1,47 @@
+@import '../../styles/variables/breakpoints.scss';
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .skills-container {
+        flex: 1;
+        display: flex;
+        padding: 50px 30px;
+        gap: 30px;
+        box-sizing: border-box;
+
+        article {
+            border-radius: 25px;
+            width: 33%;
+            height: 100%;
+            background-color: black;
+        }
+
+        @media (width < $breakpoint-tablet) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+
+            article {
+                width: 100%;
+            }
+
+            &>article:nth-child(3) {
+                grid-column: 1 / span 2;
+            }
+        }
+
+        @media (width <= $breakpoint-mobile) {
+            display: flex;
+            flex-direction: column;
+
+            article {
+                width: 100%;
+                height: 33%;
+            }
+        }
+
+    }
+}
