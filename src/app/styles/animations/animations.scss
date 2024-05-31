@@ -1,0 +1,92 @@
+// NavButton Animations
+@keyframes navButtonAnimCenter {
+    90% {
+        width: 250%;
+    }
+
+    100% {
+        width: 225%;
+    }
+}
+
+@keyframes navButtonAnimDot0 {
+    from {
+        width: 4px;
+    }
+
+    to {
+        width: calc(100% + 4px);
+        height: 4px;
+        left: 50%;
+    }
+}
+
+@keyframes navButtonAnimDot1-3-5-7 {
+    from {
+        width: 4px;
+    }
+
+    to {
+        width: 75%;
+    }
+}
+
+@keyframes navButtonAnimDot2 {
+    from {
+        height: 4px;
+    }
+
+    to {
+        height: calc(100% + 4px);
+        width: 4px;
+        top: 50%;
+    }
+}
+
+@keyframes navButtonAnimDot6 {
+    from {
+        height: 4px;
+    }
+    to {
+        height: calc(100% + 4px);
+        width: 4px;
+        top: 50%;
+    }
+}
+
+@keyframes navButtonAnimDot8 {
+    from {
+        width: 4px;
+    }
+    to {
+        width: calc(100% + 4px);
+        height: 4px;
+        left: 50%;
+    }
+}
+
+
+@keyframes rgbText {
+    @for $i from 0 through 10 {
+        #{percentage($i * (1 / 10))} {
+            color: hsla(random(365), 60, 60, 1);
+        }
+    }
+}
+
+@keyframes sliderDot {
+    0% {
+        left: 105%;
+        width: 5px;
+    }
+
+    50% {
+        width: 10px;
+    }
+
+    100% {
+        left: -5%;
+        width: 5px;
+    }
+}
+
