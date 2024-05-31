@@ -1,0 +1,12 @@
+@import '../../styles/variables/color.scss';
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    span {
+        font-family: 'Ubuntu';
+        color: $button-text-color;
+    }
+}
