@@ -1,0 +1,5 @@
+<button (click)="handleClick()" (mouseenter)="animateDots()" (mouseleave)="animateDotsBack()">
+    <div class="icon-container">
+        <span #dotRef class="dot-icon" *ngFor="let dot of dots; let i = index" [ngClass]="'dot-' + i"></span>
+    </div>
+</button>

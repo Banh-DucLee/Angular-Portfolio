@@ -1,0 +1,134 @@
+@import '../../styles/animations/animations.scss';
+@import '../../styles/variables/color.scss';
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+
+    .icon-container {
+        z-index: -1;
+        position: relative;
+        width: 20px;
+        height: 20px;
+
+        .dot-icon {
+            z-index: -1;
+            position: absolute;
+            aspect-ratio: 1;
+            width: 4px;
+            height: auto;
+            border-radius: 50%;
+            background: none;
+            border: solid 1px $stroke-color;
+            transition: all 0.2s ease-in-out;
+            transform: translate(-50%,-50%);
+        }
+
+        .dot-0, .dot-1, .dot-2 {
+            top: 0;
+        }
+
+        .dot-3, .dot-4, .dot-5 {
+            top: 50%;
+        }
+
+        .dot-6, .dot-7, .dot-8 {
+            top: 100%;
+        }
+
+        .dot-0, .dot-3, .dot-6 {
+            left: 0;
+        }
+
+        .dot-2, .dot-5, .dot-8 {
+            left: 100%;
+        }
+
+        .dot-0-anim {
+            animation: navButtonAnimDot0 .1s ease;
+            aspect-ratio: none;
+            border-radius: 50px;
+
+        }
+        .dot-0-hover {
+            width: calc(100% + 4px);
+            height: 4px;
+            left: 50%;
+        }
+        
+        .dot-1-anim {
+            animation: navButtonAnimDot1-3-5-7 .1s ease;
+        }
+        .dot-1-hover {
+            width: 75%;
+        }
+
+        .dot-2-anim {
+            animation: navButtonAnimDot2 .1s ease;
+            aspect-ratio: none;
+            border-radius: 50px;
+        }
+        .dot-2-hover {
+            height: calc(100% + 4px);
+            top: 50%;
+        }
+
+                
+        .dot-3-anim {
+            animation: navButtonAnimDot1-3-5-7 .1s ease;
+        }
+        .dot-3-hover {
+            width: 75%;
+        }
+
+        .dot-4-anim {
+            width: 225%;
+            animation: navButtonAnimCenter .2s ease;
+        }
+
+                
+        .dot-5-anim {
+            animation: navButtonAnimDot1-3-5-7 .1s ease;
+        }
+        .dot-5-hover {
+            width: 75%;
+        }
+
+        .dot-6-anim {
+            animation: navButtonAnimDot6 .1s ease;
+            aspect-ratio: none;
+            border-radius: 50px;
+        }
+        .dot-6-hover {
+            height: calc(100% + 4px);
+            width: 4px;
+            top: 50%;
+        }
+            
+        .dot-7-anim {
+            animation: navButtonAnimDot1-3-5-7 .1s ease;
+        }
+        .dot-7-hover {
+            width: 75%;
+        }
+
+        .dot-8-anim {
+            animation: navButtonAnimDot8 .1s ease;
+            aspect-ratio: none;
+            border-radius: 50px;
+        }
+        .dot-8-hover {
+            width: calc(100% + 4px);
+            height: 4px;
+            left: 50%;
+        }
+    }
+
+}
