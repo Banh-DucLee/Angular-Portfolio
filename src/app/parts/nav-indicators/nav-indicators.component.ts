@@ -40,7 +40,7 @@ export class NavIndicatorsComponent implements OnInit{
       } else {
         this.navigateToPrevious();
       }
-      setTimeout(() => this.isNavigating = false, 500);
+      setTimeout(() => this.isNavigating = false, 750);
     }
   }
 

@@ -1,4 +1,5 @@
 @import '../../styles/variables/color.scss';
+@import '../../styles/animations/animations.scss';
 
 :host {
     z-index: 100;
@@ -23,6 +24,7 @@
             transition: background-color 0.3s ease-in-out;
             
             &.active {
+                animation: navIndicatorActive .75s ease-in-out;
                 background-color: $highlight-color;
             }
         
