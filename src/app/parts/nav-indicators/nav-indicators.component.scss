@@ -1,3 +1,5 @@
+@import '../../styles/variables/color.scss';
+
 :host {
     z-index: 100;
     
@@ -14,14 +16,14 @@
             aspect-ratio: 1;
             width: 8px;
             height: auto;
-            border: solid 1px #000;
+            border: solid 1px $stroke-color;
             border-radius: 50%;
             cursor: pointer;
             background-color: transparent;
             transition: background-color 0.3s ease-in-out;
             
             &.active {
-                background-color: #000;
+                background-color: $highlight-color;
             }
         
         }
