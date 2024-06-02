@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { LanguageService } from '../../services/language/language.service';
 import { Subscription } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss'
 })
-export class SkillsComponent {
+export class SkillsComponent implements OnInit, OnDestroy {
   languageService: LanguageService = inject(LanguageService);
 
   private lnaguageSubcription!: Subscription;

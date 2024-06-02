@@ -1,7 +1,9 @@
-<nav class="nav-indicators">
-    <div *ngFor="let route of routes"
-         [class.active]="activeRoute.includes(route.path!)"
-         (click)="navigate(route.path!)"
-         class="indicator">
-    </div>
-</nav>
+@if (activeRoute !== '/login') {
+    <nav class="nav-indicators">
+        <div *ngFor="let route of routes"
+             [class.active]="activeRoute.includes(route.path!)"
+             (click)="navigate(route.path!)"
+             class="indicator">
+        </div>
+    </nav>
+}

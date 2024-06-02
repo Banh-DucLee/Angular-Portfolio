@@ -1,4 +1,5 @@
 @import '../../styles/variables/breakpoints.scss';
+@import '../../styles/animations/animations.scss';
 
 main {
     display: flex;
@@ -11,6 +12,7 @@ main {
         padding: 50px 30px;
         gap: 30px;
         box-sizing: border-box;
+        animation: containerAppear 0.7s ease;
 
         article {
             border-radius: 25px;

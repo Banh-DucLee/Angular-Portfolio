@@ -1,4 +1,5 @@
 @import '../../styles/variables/breakpoints.scss';
+@import '../../styles/animations/animations.scss';
 
 .container {
     display: flex;
@@ -11,6 +12,7 @@
         grid-template-rows: auto;
         gap: 30px;
         padding: 50px 30px;
+        animation: containerAppear .7s ease;
 
         article {
             width: 100%;

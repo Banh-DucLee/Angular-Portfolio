@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './nav-indicators.component.scss'
 })
 export class NavIndicatorsComponent implements OnInit{
-  public routes: Routes = routes.filter(route => route.path && route.path !== '**');
+  public routes: Routes = routes.filter(route => route.path && route.path !== '**' && route.path !== 'login');
   public activeRoute: string = '';
   private isNavigating: boolean = false;
 
@@ -33,7 +33,7 @@ export class NavIndicatorsComponent implements OnInit{
   }
 
   @HostListener('window:wheel', ['$event']) onScroll(event: WheelEvent) {
-    if (!this.isNavigating) {
+    if (!this.isNavigating && this.activeRoute !== '/login') {
       this.isNavigating = true;
       if (event.deltaY > 0) {
         this.navigateToNext();
