@@ -6,7 +6,9 @@ button {
     cursor: pointer;
 
     span {
-        font-family: 'Ubuntu';
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 1.3rem;
         color: $button-text-color;
     }
 }
