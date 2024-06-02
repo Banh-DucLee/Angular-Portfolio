@@ -76,15 +76,6 @@
     }
 }
 
-@keyframes separator {
-    0% {
-        width: 0%;
-    }
-    100% {
-        width: 100%;
-    }
-}
-
 @keyframes sliderDot {
     0% {
         left: 105%;
@@ -130,6 +121,34 @@
 
     100% {
         width: 8px;
+    }
+}
+
+@keyframes textAppear {
+    from {
+        width: 0%;
+        font-size: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes separatorAppear {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes containerAppear {
+    from {
+        flex: 0;
+    }
+    to {
+        flex: 1;
     }
 }
 
