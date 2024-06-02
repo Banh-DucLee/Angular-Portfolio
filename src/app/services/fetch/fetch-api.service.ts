@@ -1,17 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FetchAPIService {
+export class FetchAPIService implements OnInit {
   private url = 'http://localhost:3333/api';
   private isLogin = new BehaviorSubject<boolean>(false);
   public isLogin$ = this.isLogin.asObservable();
   constructor(private http: HttpClient, private router: Router) { }
 
+  ngOnInit(): void {
+    if (localStorage.getItem('token')) {
+      this.isLogin.next(true);
+    }
+  }
+  
   public login(email: string, password: string) {
     const endpoint = '/auth/login';
     this.http.post(this.url + endpoint, { email, password }).subscribe(
