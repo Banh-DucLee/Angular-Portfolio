@@ -1,20 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FetchAPIService {
   private url = 'http://localhost:3333/api';
-  public isLogin: boolean = false;
-  constructor(private http: HttpClient) { }
+  private isLogin = new BehaviorSubject<boolean>(false);
+  public isLogin$ = this.isLogin.asObservable();
+  constructor(private http: HttpClient, private router: Router) { }
 
   public login(email: string, password: string) {
     const endpoint = '/auth/login';
     this.http.post(this.url + endpoint, { email, password }).subscribe(
       (data: any) => {
         localStorage.setItem('token', data.token);
-        this.isLogin = true;
+        this.isLogin.next(true);
+        this.router.navigate(['/home']);
       },
       (error: any) => {
         console.log(error);
@@ -23,7 +27,19 @@ export class FetchAPIService {
   }
 
   public logout() {
-    this.isLogin = false;
+    this.isLogin.next(false);
     localStorage.removeItem('token');
+  }
+
+  public getSkills() {
+    const endpoint = '/skills';
+    this.http.get(this.url + endpoint).subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
   }
 }
