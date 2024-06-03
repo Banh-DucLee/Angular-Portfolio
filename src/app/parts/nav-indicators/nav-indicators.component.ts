@@ -1,8 +1,10 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, inject } from '@angular/core';
 import { Router, Routes, NavigationEnd, Event } from '@angular/router';
 import { routes } from '../../app.routes';
 import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { ModalStatusService } from '../../services/modal/modal-status.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-nav-indicators',
@@ -11,7 +13,12 @@ import { CommonModule } from '@angular/common';
   templateUrl: './nav-indicators.component.html',
   styleUrl: './nav-indicators.component.scss'
 })
-export class NavIndicatorsComponent implements OnInit{
+export class NavIndicatorsComponent implements OnInit, OnDestroy {
+  modalStatusService: ModalStatusService = inject(ModalStatusService);
+
+  private modalSubscription!: Subscription;
+  isModalOpen: boolean = false;
+
   public routes: Routes = routes.filter(route => route.path && route.path !== '**' && route.path !== 'login');
   public activeRoute: string = '';
   private isNavigating: boolean = false;
@@ -26,6 +33,13 @@ export class NavIndicatorsComponent implements OnInit{
       .subscribe((event: NavigationEnd) => {
         this.activeRoute = event.urlAfterRedirects;
       });
+      this.modalSubscription = this.modalStatusService.isOpen$.subscribe((modalStatus) => {
+        this.isModalOpen = modalStatus;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.modalSubscription.unsubscribe();
   }
 
   navigate(path: string): void {
@@ -33,14 +47,16 @@ export class NavIndicatorsComponent implements OnInit{
   }
 
   @HostListener('window:wheel', ['$event']) onScroll(event: WheelEvent) {
-    if (!this.isNavigating && this.activeRoute !== '/login') {
-      this.isNavigating = true;
-      if (event.deltaY > 0) {
-        this.navigateToNext();
-      } else {
-        this.navigateToPrevious();
+    if (!this.isModalOpen) {
+      if (!this.isNavigating && this.activeRoute !== '/login') {
+        this.isNavigating = true;
+        if (event.deltaY > 0) {
+          this.navigateToNext();
+        } else {
+          this.navigateToPrevious();
+        }
+        setTimeout(() => this.isNavigating = false, 750);
       }
-      setTimeout(() => this.isNavigating = false, 750);
     }
   }
 
