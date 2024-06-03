@@ -38,7 +38,7 @@ body {
                 }
             }
     
-            h1, h2 {
+            h1, h2, h3 {
                 margin: 0;
                 animation: textAppear .5s ease-in-out;
             }
@@ -58,6 +58,7 @@ body {
                 box-sizing: border-box;
             }
         }
+
         h1 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2.5rem, 2.0599rem + 1.8779vw, 3.75rem);
@@ -68,10 +69,17 @@ body {
             font-size: clamp(1.25rem, 1.0299rem + 0.939vw, 1.875rem);        
         }
 
+        h3 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem);        
+        }
+
         p {
             font-family: 'Roboto', sans-serif;
             font-weight: 300;
-            font-size: clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem);        }
+            font-size: clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem);        
+        }
 
         @media (width < $breakpoint-tablet) {
             padding: 100px 25px 25px 25px;
