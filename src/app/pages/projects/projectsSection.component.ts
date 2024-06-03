@@ -4,13 +4,13 @@ import { Subscription } from 'rxjs';
 import { FetchAPIService } from '../../services/fetch/fetch-api.service';
 
 @Component({
-  selector: 'app-projects',
+  selector: 'app-projects-section',
   standalone: true,
   imports: [],
-  templateUrl: './projects.component.html',
-  styleUrl: './projects.component.scss'
+  templateUrl: './projectsSection.component.html',
+  styleUrl: './projectsSection.component.scss'
 })
-export class ProjectsComponent {
+export class ProjectsSectionComponent {
   languageService: LanguageService = inject(LanguageService);
   fetchAPIService: FetchAPIService = inject(FetchAPIService);
 

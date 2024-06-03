@@ -1,0 +1,37 @@
+@import '../../styles/variables/color.scss';
+
+:host {
+    main {
+        section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            
+            h1, h2 {
+                text-align: center;
+                margin: 0;
+                color: $paragraph-color;
+            }
+        
+            h1 {
+                font-size: clamp(2.5rem, 2.0599rem + 1.8779vw, 3.75rem);
+                color: $headline-color;
+            }
+    
+            app-slider-home {
+                position: absolute;
+                bottom: 0;
+                transform-origin: center left;
+                width: auto;
+                left: 50%;
+                transform: rotate(-90deg);
+            }
+        }
+    
+    }
+
+}

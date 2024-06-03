@@ -1,10 +1,11 @@
 @import '../../styles/variables/breakpoints.scss';
 @import '../../styles/animations/animations.scss';
 
-main {
+section {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    height: 100vh;
 
     .skills-container {
         flex: 1;
@@ -27,8 +28,13 @@ main {
             backdrop-filter: blur( 10px );
             -webkit-backdrop-filter: blur( 10px );
 
-            .lang-container {
+            .lang-container, .framework-container, .tool-container {
                 flex: 1;
+                display: flex;
+                flex-flow: row wrap;
+                gap: 30px;
+                justify-content: space-evenly;
+                align-items: center;
             }
         }
 

@@ -9,13 +9,13 @@ import { Skill } from '../../interfaces/Skill.inteface';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-skills',
+  selector: 'app-skills-section',
   standalone: true,
   imports: [SkillComponent, ModalComponent, ReactiveFormsModule],
-  templateUrl: './skills.component.html',
-  styleUrl: './skills.component.scss'
+  templateUrl: './skillsSection.component.html',
+  styleUrl: './skillsSection.component.scss'
 })
-export class SkillsComponent implements OnInit, OnDestroy {
+export class SkillsSectionComponent implements OnInit, OnDestroy {
   languageService: LanguageService = inject(LanguageService);
   fetchAPIService: FetchAPIService = inject(FetchAPIService);
   modalStatusService: ModalStatusService = inject(ModalStatusService);

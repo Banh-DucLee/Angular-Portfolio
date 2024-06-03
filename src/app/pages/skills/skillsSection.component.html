@@ -1,4 +1,4 @@
-<main class="container">
+<section class="container">
     <div class="text-container">
         <h1 class="title">
             {{titleText}}
@@ -21,7 +21,7 @@
         </article>
         <article class="frameworks-skills">
             <h3 class="title">{{frameworkText}}</h3>
-            <div class="lang-container">
+            <div class="framework-container">
                 @for (item of skills; track $index) {
                     @if (item.category === 'framework') {
                         <app-skill [skill]="item"></app-skill>
@@ -31,7 +31,7 @@
         </article>
         <article class="tools-skills">
             <h3 class="title">{{toolText}}</h3>
-            <div class="lang-container">
+            <div class="tool-container">
                 @for (item of skills; track $index) {
                     @if (item.category === 'tool') {
                         <app-skill [skill]="item"></app-skill>
@@ -66,4 +66,4 @@
             </form>
         </app-modal>
     }
-</main>
+</section>

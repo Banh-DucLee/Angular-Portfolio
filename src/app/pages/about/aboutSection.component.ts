@@ -3,13 +3,13 @@ import { LanguageService } from '../../services/language/language.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-about',
+  selector: 'app-about-section',
   standalone: true,
   imports: [],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.scss'
+  templateUrl: './aboutSection.component.html',
+  styleUrl: './aboutSection.component.scss'
 })
-export class AboutComponent implements OnInit, OnDestroy {
+export class AboutSectionComponent implements OnInit, OnDestroy {
   languageService: LanguageService = inject(LanguageService);
 
   private lnaguageSubcription!: Subscription;

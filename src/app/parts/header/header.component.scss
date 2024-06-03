@@ -1,9 +1,15 @@
+@import '../../styles/variables/color.scss';
+
 :host {
     position: fixed;
+    z-index: 1;
     top: 0;
     right: 20px;
     width: 100vw;
     height: 100px;
+    background: rbga($background-color, 0.1);
+    backdrop-filter: blur( 10px );
+    -webkit-backdrop-filter: blur( 10px );
 
     header {
         z-index: 1;
@@ -14,6 +20,7 @@
         align-items: center;
         justify-content: flex-end;
         gap: 15px;
+        
         
         ng-icon {
             scale: 1.5;

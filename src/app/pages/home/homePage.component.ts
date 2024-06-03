@@ -2,15 +2,19 @@ import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { LanguageService } from '../../services/language/language.service';
 import { Subscription } from 'rxjs';
 import { SliderHomeComponent } from '../../parts/slider/slider-home.component';
+import { AboutSectionComponent } from '../about/aboutSection.component';
+import { SkillsSectionComponent } from '../skills/skillsSection.component';
+import { ProjectsSectionComponent } from '../projects/projectsSection.component';
+import { ContactSectionComponent } from '../contact/contactSection.component';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-home-page',
   standalone: true,
-  imports: [SliderHomeComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  imports: [SliderHomeComponent, AboutSectionComponent, SkillsSectionComponent, ProjectsSectionComponent, ContactSectionComponent],
+  templateUrl: './homePage.component.html',
+  styleUrl: './homePage.component.scss'
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomePageComponent implements OnInit, OnDestroy {
   languageService: LanguageService = inject(LanguageService);
 
   private languageSubscription!: Subscription;
