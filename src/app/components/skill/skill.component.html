@@ -1,0 +1,7 @@
+<div class="skill-container">
+    <img src="{{skill.imageUrl}}" alt="Skill Logo">
+    <p>{{skill.name}}</p>
+    @if (isLogin) {
+        <ng-icon name="matCloseRound" (click)="fetchAPIService.deleteSkill(skill._id)"></ng-icon>
+    }
+</div>
