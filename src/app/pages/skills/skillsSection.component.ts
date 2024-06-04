@@ -72,7 +72,7 @@ export class SkillsSectionComponent implements OnInit, OnDestroy {
     
   }
 
-  onFileChange(event: any) {
+  onFileChange(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
       this.selectedFile = file;

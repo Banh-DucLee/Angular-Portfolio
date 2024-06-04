@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container" id="skills">
     <div class="text-container">
         <h1 class="title">
             {{titleText}}
@@ -10,7 +10,7 @@
     </div>
     <div class="skills-container">
         <article class="lang-skills">
-            <h3 class="title">{{langText}}</h3>
+            <h2 class="title">{{langText.toLowerCase()}}</h2>
             <div class="lang-container">
                 @for (item of skills; track $index) {
                     @if (item.category === 'language') {
@@ -20,7 +20,7 @@
             </div>
         </article>
         <article class="frameworks-skills">
-            <h3 class="title">{{frameworkText}}</h3>
+            <h2 class="title">{{frameworkText.toLowerCase()}}</h2>
             <div class="framework-container">
                 @for (item of skills; track $index) {
                     @if (item.category === 'framework') {
@@ -30,7 +30,7 @@
             </div>
         </article>
         <article class="tools-skills">
-            <h3 class="title">{{toolText}}</h3>
+            <h2 class="title">{{toolText.toLowerCase()}}</h2>
             <div class="tool-container">
                 @for (item of skills; track $index) {
                     @if (item.category === 'tool') {
@@ -42,7 +42,7 @@
     </div>
     @if (isModalOpen) {
         <app-modal>
-            <h2 class="title">Modifier les compétences</h2>
+            <h2 class="title">Ajouter une compétence</h2>
 
             <form [formGroup]="skillForm" (ngSubmit)="onSubmit($event)">
                 <div class="name-container">
@@ -60,7 +60,6 @@
                 <div class="image-container">
                     <label for="image">Image</label>
                     <input type="file" id="image" name="image" (change)="onFileChange($event)">
-                    <span class="preview-image"></span>
                 </div>
                 <button type="submit">Créer</button>
             </form>
