@@ -1,6 +1,6 @@
 <header>
     <app-toggle-button Icon="{{languageButtonIcon}}" (onClick)="languageService.toggleLanguage()"></app-toggle-button>
-    @if (!isLogin) {
+    @if (isLogin) {
         <ng-icon name="matLogoutRound" (click)="fetchAPIService.logout()"></ng-icon>
     }
     <nav class="navbar">
