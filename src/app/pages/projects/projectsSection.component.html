@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container" id="projects">
     <article class="text-container">
         <h1 class="title">
             {{titleText}}
@@ -9,17 +9,53 @@
         <span class="separator"></span>
     </article>
     <div class="projects-container">
-        <article class="project-booki">
-
-        </article>
-        <article class="project-kasa">
-            
-        </article>
-        <article class="project-backend">
-            
-        </article>
-        <article class="project-gol">
-            
-        </article>
+        @for (item of projects; track $index) {
+            <app-project [project]="item"></app-project>
+        }
     </div>
+    @if (isModalOpen) {
+        <app-modal>
+            <h2 class="title">Ajouter un projet</h2>
+
+            <form [formGroup]="projectForm" (ngSubmit)="onSubmit($event)">
+                <div class="title-container">
+                    <label for="title">Titre</label>
+                    <input type="text" id="title" name="title" formControlName="title" required>
+                </div>
+                <div class="description-container">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" name="description" formControlName="description" required>
+                    <input type="text" id="description-english" name="description-english" formControlName="descriptionEnglish" required>
+                </div>
+                <div class="githubUrl-container">
+                    <label for="githubUrl">Lien GitHub</label>
+                    <input type="url" id="githubUrl" name="githubUrl" formControlName="githubUrl">
+                </div>
+                <div class="liveDemonUrl">
+                    <label for="liveDemonUrl">Lien Demo</label>
+                    <input type="url" id="liveDemonUrl" name="liveDemonUrl" formControlName="liveDemoUrl">
+                </div>
+                <div class="skill-container">
+                    <label for="skills">Compétences</label>
+                    <select #skillSelect>
+                        @for (item of skills; track $index) {
+                            <option [value]="item._id">{{item.name}}</option>
+                        }
+                    </select>
+                    <button type="button" (click)="addSkill(skillSelect.value)">Ajouter la compétence</button>
+                    @for (item of selectedSkills; track $index) {
+                        <div>
+                            <span>{{getSkillName(item)}}</span>
+                            <button type="button" (click)="removeSkill(item)">Retirer</button>
+                        </div>
+                    }
+                </div>
+                <div class="image-container">
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image" (change)="onFileChange($event)">
+                </div>
+                <button type="submit">Créer</button>
+            </form>
+        </app-modal>
+    }
 </section>

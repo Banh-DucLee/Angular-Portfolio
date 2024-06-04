@@ -2,6 +2,7 @@
 @import '../../styles/animations/animations.scss';
 
 .container {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -30,5 +31,32 @@
             flex-direction: column;
         }
 
+    }
+
+    app-modal {
+        top: 0;
+        box-sizing: border-box;
+        form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            padding: 0 50px;
+            box-sizing: border-box;
+
+            div {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                box-sizing: border-box;
+
+                input {
+                    width: 100%;
+                }
+            }
+
+        }
     }
 }
