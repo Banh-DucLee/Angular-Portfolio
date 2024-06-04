@@ -86,4 +86,8 @@ body {
             padding: 100px 25px 25px 25px;
         }
     }
+
+    &.freeze {
+        overflow: hidden;
+    }
 }
