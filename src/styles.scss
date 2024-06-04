@@ -6,9 +6,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: $background-color;
+    overflow-x: hidden;
 
     section {
-        padding: 100px 50px 50px 50px;
+        margin-top: 100px;
+        padding: 75px 50px 50px 50px;
+        width: 100vw;
         box-sizing: border-box;
 
         .text-container {
