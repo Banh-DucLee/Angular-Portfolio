@@ -1,7 +1,55 @@
 <header>
-    @if (isLogin) {
+    <app-toggle-button Icon="{{languageButtonIcon}}" (onClick)="languageService.toggleLanguage()"></app-toggle-button>
+    @if (!isLogin) {
         <ng-icon name="matLogoutRound" (click)="fetchAPIService.logout()"></ng-icon>
     }
-    <app-toggle-button Icon="{{languageButtonIcon}}" (onClick)="languageService.toggleLanguage()"></app-toggle-button>
-    <app-nav-button></app-nav-button>
+    <nav class="navbar">
+        <ul>
+            <li>
+                <a href="/home#">{{homeText}}</a>
+                <span [class.active]="isActive('/home')"></span>
+            </li>
+            <li>
+                <a href="/home#about">{{aboutText}}</a>
+                <span [class.active]="isActive('/home#about')"></span>
+            </li>
+            <li>
+                <a href="/home#skills">{{skillsText}}</a>
+                <span [class.active]="isActive('/home#skills')"></span>
+            </li>
+            <li>
+                <a href="/home#projects">{{projectsText}}</a>
+                <span [class.active]="isActive('/home#projects')"></span>
+            </li>
+            <li>
+                <a href="/home#contact">{{contactText}}</a>
+                <span [class.active]="isActive('/home#contact')"></span>
+            </li>
+        </ul>
+    </nav>
+    <app-nav-button #navButton (onClick)="toggleOpen()"></app-nav-button>
+    <aside class="aside-container" [ngClass]="isOpen ? 'open' : ''">
+        <div class="menu-container">
+            <nav class="nav-container">
+                <ul>
+                    <li>
+                        <a href="/home#" [class.active]="isActive('/home')">{{homeText}}</a>
+                    </li>
+                    <li>
+                        <a href="/home#about" [class.active]="isActive('/home#about')">{{aboutText}}</a>
+                    </li>
+                    <li>
+                        <a href="/home#skills" [class.active]="isActive('/home#skills')">{{skillsText}}</a>
+                    </li>
+                    <li>
+                        <a href="/home#projects" [class.active]="isActive('/home#projects')">{{projectsText}}</a>
+                    </li>
+                    <li>
+                        <a href="/home#contact" [class.active]="isActive('/home#contact')">{{contactText}}</a>
+                    </li>
+                </ul>
+            </nav>
+            <ng-icon name="matArrowBackIosNewRound" (click)="toggleOpen()"></ng-icon>
+        </div>
+    </aside>
 </header>
