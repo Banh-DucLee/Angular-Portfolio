@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { matCloseRound } from '@ng-icons/material-icons/round';
 import { ModalStatusService } from '../../services/modal/modal-status.service';
@@ -13,13 +13,6 @@ import { Subscription } from 'rxjs';
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent implements OnInit, OnDestroy {
-@HostListener('window:scroll', ['$event']) 
-  onWindowScroll(event: Event) {
-    if (this.isModalOpen) {
-
-    }
-  }
-
   modalStatusService: ModalStatusService = inject(ModalStatusService);
 
   private modalSubscription!: Subscription;
@@ -33,5 +26,9 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
       this.modalSubscription.unsubscribe();
+  }
+
+  goTo(path: string) {
+
   }
 }
