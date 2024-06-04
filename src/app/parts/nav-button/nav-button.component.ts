@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Output, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, QueryList, Renderer2, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,6 +13,8 @@ export class NavButtonComponent implements AfterViewInit {
   @ViewChildren('dotRef') dotRefs!: QueryList<ElementRef>;
 
   dots: Array<Number> = Array(9).fill(0);
+
+  isClick: boolean = false;
 
   private timeouts: any[] = [];
 
@@ -31,7 +33,14 @@ export class NavButtonComponent implements AfterViewInit {
     this.onClick.emit();
   }
 
-
+  toggle(): void {
+    this.isClick = !this.isClick;
+    if (this.isClick) {
+      this.animateDots();
+    } else {
+      this.animateDotsBack();
+    }
+  }
 
   animateDots(): void {
     this.dotRefs.forEach((dotRef, i) => {
