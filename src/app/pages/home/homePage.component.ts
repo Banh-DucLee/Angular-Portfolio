@@ -25,7 +25,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
       this.languageSubscription = this.languageService.language$.subscribe((language) => {
         this.titleText = language == 'fr' ? `Hey, je suis Duc-Lee Banh` : `Hey, I'm Banh Duc-Lee`;
-        this.descriptionText = language == 'fr' ? `un développeur web axé sur le front-end` : `a front-end web developer`;
+        this.descriptionText = language == 'fr' ? `un développeur web front-end` : `a front-end web developer`;
       })
   }
 
