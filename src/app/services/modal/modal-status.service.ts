@@ -12,5 +12,10 @@ export class ModalStatusService {
 
   toggleOpen() {
     this.isOpen.next(!this.isOpen.value);
+    if (this.isOpen.value) {
+      document.body.classList.add('freeze');
+    } else {
+      document.body.classList.remove('freeze');
+    }
   }
 }
