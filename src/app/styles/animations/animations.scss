@@ -67,15 +67,6 @@
     }
 }
 
-
-@keyframes rgbText {
-    @for $i from 0 through 10 {
-        #{percentage($i * (1 / 10))} {
-            border-color: hsla(random(365), 60, 60, 1);
-        }
-    }
-}
-
 @keyframes sliderDot {
     0% {
         left: 105%;
