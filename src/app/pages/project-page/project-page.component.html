@@ -1,1 +1,29 @@
-<p>project-page works!</p>
+<section class="container">
+    <div class="image-container">
+        <img [src]="project.imageUrl" alt="project image">
+    </div>
+    <div class="text-container">
+        <div class="title-container">
+            <h1>{{project.title.toLowerCase()}}</h1>
+            <span class="separator"></span>
+        </div>
+        <div class="stack">
+            <h2>stack</h2>
+            <div class="stack-container">
+                @for (skill of stack; track $index) {
+                    <app-skill [skill]="skill"></app-skill>
+                }
+            </div>
+        </div>
+        <p>{{descriptionText}}</p>
+        <div class="links">
+            <h2>liens</h2>
+            <div class="links-container">
+                <a [href]="project.githubUrl" target="_blank">{{githubText}}</a>
+                @if (project.liveDemoUrl !== '') {
+                    <a [href]="project.liveDemoUrl" target="_blank">{{liveDemoText}}</a>
+                }
+            </div>
+        </div>
+    </div>
+</section>
