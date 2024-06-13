@@ -1,8 +1,4 @@
 <header>
-    <app-toggle-button Icon="{{languageButtonIcon}}" (onClick)="languageService.toggleLanguage()"></app-toggle-button>
-    @if (isLogin) {
-        <ng-icon name="matLogoutRound" (click)="fetchAPIService.logout()"></ng-icon>
-    }
     <nav class="navbar">
         <ul>
             <li>
@@ -27,6 +23,10 @@
             </li>
         </ul>
     </nav>
+    <app-toggle-button Icon="{{languageButtonIcon}}" (onClick)="languageService.toggleLanguage()"></app-toggle-button>
+    @if (isLogin) {
+        <ng-icon name="matLogoutRound" (click)="fetchAPIService.logout()"></ng-icon>
+    }
     <app-nav-button #navButton (onClick)="toggleOpen()"></app-nav-button>
     <aside class="aside-container" [ngClass]="isOpen ? 'open' : ''">
         <div class="menu-container">
