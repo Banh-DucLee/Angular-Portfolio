@@ -1,9 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Skill } from '../../interfaces/Skill.inteface';
 import { Project } from '../../interfaces/Project.interface';
+import { About } from '../../interfaces/About.interface';
+import { Social } from '../../interfaces/Social.interface';
+import { Contact } from '../../interfaces/Contact.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +42,128 @@ export class FetchAPIService implements OnInit {
     localStorage.removeItem('token');
   }
 
+  public getAbout(): Observable<About[]> {
+    const endpoint = '/abouts';
+    let about: About[] = [];
+  
+    return this.http.get<About[]>(this.url + endpoint);
+  }
+
+  public createAbout(about: About, image: File): void {
+    const endpoint = '/abouts';
+    const formData: FormData = new FormData();
+    formData.append('about', JSON.stringify(about));
+    formData.append('image', image, image.name);
+
+    const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    this.http.post(this.url + endpoint, formData, { headers: headers }).subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    )
+  }
+
+  public modifyAbout(about: About, image: File): void {
+    const endpoint = '/abouts/' + about._id;
+    const formData: FormData = new FormData();
+    formData.append('about', JSON.stringify(about));
+
+    if (image) {
+      formData.append('image', image, image.name);
+    }
+
+    const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    this.http.put(this.url + endpoint, formData ,{headers: headers}).subscribe(
+      (data: any) => {
+
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    )
+  }
+
+  public getSocials(): Social[] {
+    const endpoint = '/socials';
+    let socials: Social[] = [];
+
+    this.http.get<Social[]>(this.url + endpoint).subscribe(
+      (data: Social[]) => {
+        socials.push(...data);
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    )
+
+    return socials;
+  }
+
+  public getSocial(id: string): Social {
+    const endpoint = '/socials/' + id;
+    let social: Social = {
+      _id: '',
+      name: '',
+      imageUrl: '',
+      url: ''
+    };
+    this.http.get<Social>(this.url + endpoint).subscribe(
+      (data: Social) => {
+        social = data;
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    )
+
+    return social;
+  }
+
+  public createSocial(social: Social, image: File): void {
+    const endpoint = '/socials';
+    const formData: FormData = new FormData();
+    formData.append('social', JSON.stringify(social));
+    formData.append('image', image, image.name);
+
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    this.http.post(this.url + endpoint, formData, {headers: headers}).subscribe(
+      (data: any) => {
+
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    )
+  }
+
+  public uploadResume(resume: File): void {
+    const endpoint = '/resume';
+    const formData: FormData = new FormData();
+    formData.append('resume', resume, resume.name);
+
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    
+    this.http.post(this.url + endpoint, formData, { headers: headers});
+  }
+
+  public getResume(): Observable<Blob> {
+    const endpoint = '/resume';
+
+    return this.http.get(this.url + endpoint, { responseType: 'blob' });
+  }
+
   public getSkills(): Skill[] {
     const endpoint = '/skills';
     const skills: Skill[] = [];
@@ -54,24 +179,9 @@ export class FetchAPIService implements OnInit {
     return skills;
   }
 
-  public getSkill(id: string): Skill {
+  public getSkill(id: string): Observable<Skill> {
     const endpoint = '/skills/' + id;
-    let skill: Skill = {
-      _id: '',
-      name: '',
-      imageUrl: '',
-      category: ''
-    };
-    this.http.get<Skill>(this.url + endpoint).subscribe(
-      (data: Skill) => {
-        skill = data;
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    )
-
-    return skill;
+    return this.http.get<Skill>(this.url + endpoint);
   }
 
   public createSkill(name: string, category: string, image: File) {
@@ -125,29 +235,10 @@ export class FetchAPIService implements OnInit {
     return projects;
   }
 
-  public getProject(id: string): Project {
+  public getProjectById(id: string): Observable<Project> {
     const endpoint = '/projects/' + id;
-    let project: Project = {
-      _id: '',
-      title: '',
-      imageUrl: '',
-      description: '',
-      descriptionEnglish: '',
-      githubUrl: '',
-      liveDemoUrl: '',
-      skills: []
-    };
 
-    this.http.get<Project>(this.url + endpoint).subscribe(
-      (data: Project) => {
-        project = data;
-      }, 
-      (error: any) => {
-        console.error(error);
-      }
-    )
-
-    return project;
+    return this.http.get<{ project: Project }>(this.url + endpoint).pipe(map((response) => response.project));
   }
 
   public createProject(project: Project, image: File): void {
@@ -221,4 +312,11 @@ export class FetchAPIService implements OnInit {
       }
     );
   }
+
+  public sendContact(contact: Contact): Observable<any> {
+    const endpoint = '/contacts';
+
+    return this.http.post(this.url + endpoint, contact);
+  }
+
 }
