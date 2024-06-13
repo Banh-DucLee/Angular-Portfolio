@@ -1,4 +1,7 @@
 <a [routerLink]="['/project', project._id]" class="container">
+    @if (isLogin) {
+        <ng-icon name="matCloseRound" (click)="fetchAPIService.deleteSkill(project._id)"></ng-icon>
+    }
     <article class="project-card">
         <img [src]="project.imageUrl">
         <div class="project-info">

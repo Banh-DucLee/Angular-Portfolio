@@ -1,13 +1,16 @@
 import { Component, Input, inject } from '@angular/core';
 import { Project } from '../../interfaces/Project.interface';
 import { RouterLink } from '@angular/router';
-import { LanguageService } from '../../services/language/language.service';
 import { Subscription } from 'rxjs';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { matCloseRound } from '@ng-icons/material-icons/round';
+import { FetchAPIService } from '../../services/fetch/fetch-api.service';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, NgIconComponent],
+  viewProviders: [provideIcons({ matCloseRound })],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss'
 })
@@ -23,17 +26,18 @@ export class ProjectComponent {
   skills: []
 };
 
-languageService: LanguageService = inject(LanguageService);
+fetchAPIService: FetchAPIService = inject(FetchAPIService);
 
-private languageSubcription!: Subscription;
+private loginSubscription!: Subscription;
+isLogin: boolean = false;
 
 ngOnInit(): void {
-    this.languageSubcription = this.languageService.language$.subscribe((language) => {
-      //this.titleText = language == 'fr' ? this.project.title : this.project.titleEnglish;
-    })
+  this.loginSubscription = this.fetchAPIService.isLogin$.subscribe((log) => {
+    this.isLogin = log;
+  })
 }
 
 ngOnDestroy(): void {
-    this.languageSubcription.unsubscribe();
+
 }
 }

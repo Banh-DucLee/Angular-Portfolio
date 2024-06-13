@@ -1,0 +1,25 @@
+.container {
+    display: block;
+    text-decoration: none;
+
+    .project-card {
+        aspect-ratio: 16/11;
+        display: flex;
+        flex-direction: column;
+        border-radius: 25px;
+        overflow: hidden;
+        height: 100%;
+        width: auto;
+        background: rgba( 255, 255, 255, 0 );
+        box-shadow: 0 8px 20px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 10px );
+        -webkit-backdrop-filter: blur( 10px );
+
+        img {
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            flex-grow: 1;
+        }
+    }
+}
