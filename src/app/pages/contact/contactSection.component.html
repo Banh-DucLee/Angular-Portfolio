@@ -1,1 +1,31 @@
-<p>contact works!</p>
+<section id="contact">
+    <div class="text-container">
+        <h1>Contact</h1>
+        <span class="separator"></span>
+        <p class="text">{{text}} <a href="mailto:duclee.banh@gmail.com">duclee.banh&#64;gmail.com</a></p>
+    </div>
+    <div class="contact-form">
+        @if (!isSend) {
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit($event)">
+                <div class="input-container name-container">
+                    <label for="name">{{nameText}}</label>
+                    <input class="input" type="text" id="name" required="" formControlName="name">
+                </div>
+                <div class="input-container email-container">
+                    <label for="email">{{emailText}}</label>
+                    <input class="input" type="email" id="email" required="" formControlName="email">
+                </div>
+                <div class="input-container message-container">
+                    <label for="message">{{messageText}}</label>
+                    <textarea class="input" id="message" required="" formControlName="message"></textarea>
+                </div>
+                <button type="submit">{{buttonText}}</button>
+            </form>
+        } @else {
+            <div class="success-container">
+                <h3>{{successText}}</h3>
+                <button type="button" (click)="isSend = !isSend">{{successButtonText}}</button>
+            </div>
+        }
+    </div>
+</section>
