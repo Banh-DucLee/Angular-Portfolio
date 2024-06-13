@@ -9,8 +9,7 @@ body {
     overflow-x: hidden;
 
     section {
-        margin-top: 100px;
-        padding: 75px 50px 50px 50px;
+        padding: 50px 50px 0 50px;
         width: 100vw;
         box-sizing: border-box;
 
@@ -83,7 +82,7 @@ body {
         }
 
         @media (width < $breakpoint-tablet) {
-            padding: 100px 25px 25px 25px;
+            padding: 50px 25px 25px 25px;
         }
     }
 
