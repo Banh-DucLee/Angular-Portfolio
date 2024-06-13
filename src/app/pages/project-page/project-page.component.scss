@@ -5,6 +5,7 @@
     box-sizing: border-box;
     width: 100vw;
     height: 100vh;
+    padding: 100px 50px 50px 50px;
     display: flex;
     align-items: flex-start;
     gap: 10px;
@@ -13,17 +14,19 @@
         box-sizing: border-box;
         width: 50%;
         height: 100%;
+        background: rgba( 255, 255, 255, 0 );
+        box-shadow: 0 8px 20px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 10px );
+        -webkit-backdrop-filter: blur( 10px );
+        border-radius: 15px;
+        overflow-y: scroll;
         
         img {
             box-sizing: border-box;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            background: rgba( 255, 255, 255, 0 );
-            box-shadow: 0 8px 20px 0 rgba( 31, 38, 135, 0.37 );
-            backdrop-filter: blur( 10px );
-            -webkit-backdrop-filter: blur( 10px );
-            border-radius: 15px;
+            height: auto;
+            object-fit: contain;
+            object-position: top;
         }
 
         @media (width < $breakpoint-tablet) {
