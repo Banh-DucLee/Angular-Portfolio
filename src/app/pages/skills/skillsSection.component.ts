@@ -1,10 +1,9 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { LanguageService } from '../../services/language/language.service';
 import { Subscription } from 'rxjs';
 import { FetchAPIService } from '../../services/fetch/fetch-api.service';
 import { SkillComponent } from '../../components/skill/skill.component';
 import { ModalComponent } from '../../components/modal/modal.component';
-import { ModalStatusService } from '../../services/modal/modal-status.service';
 import { Skill } from '../../interfaces/Skill.inteface';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -16,9 +15,9 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './skillsSection.component.scss'
 })
 export class SkillsSectionComponent implements OnInit, OnDestroy {
+@ViewChild(ModalComponent) modal!: ElementRef;
   languageService: LanguageService = inject(LanguageService);
   fetchAPIService: FetchAPIService = inject(FetchAPIService);
-  modalStatusService: ModalStatusService = inject(ModalStatusService);
 
   private languageSubcription!: Subscription;  
   titleText: string = '';
@@ -29,7 +28,6 @@ export class SkillsSectionComponent implements OnInit, OnDestroy {
   private loginSubscription!: Subscription;
   isLogin: boolean = false;
 
-  private modalSubscription!: Subscription;
   isModalOpen: boolean = false;
 
   skills: Skill[] = [];
@@ -50,20 +48,12 @@ export class SkillsSectionComponent implements OnInit, OnDestroy {
       this.loginSubscription = this.fetchAPIService.isLogin$.subscribe((log) => {
         this.isLogin = log;
       })
-      this.modalSubscription = this.modalStatusService.isOpen$.subscribe((modalStatus) => {
-        this.isModalOpen = modalStatus;
-      })
       this.skills = this.fetchAPIService.getSkills();
   }
 
   ngOnDestroy(): void {
       this.languageSubcription.unsubscribe();
       this.loginSubscription.unsubscribe();
-      this.modalSubscription.unsubscribe();
-  }
-
-  modify() {
-    this.modalStatusService.toggleOpen();
   }
 
   onSubmit(event: Event) {
