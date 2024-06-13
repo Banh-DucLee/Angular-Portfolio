@@ -5,25 +5,21 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: fit-content;
 
     .projects-container {
         flex: 1;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
         grid-template-rows: auto;
         gap: 30px;
         padding: 50px 30px;
         animation: containerAppear .7s ease;
 
-        article {
-            width: 100%;
-            height: 100%;
-            border-radius: 25px;
-            background: rgba( 255, 255, 255, 0 );
-            box-shadow: 0 8px 20px 0 rgba( 31, 38, 135, 0.37 );
-            backdrop-filter: blur( 10px );
-            -webkit-backdrop-filter: blur( 10px );
+        app-project {
+            box-sizing: border-box;
+            width: auto;
+            height: auto;
         }
 
         @media (width <= $breakpoint-mobile) {

@@ -1,10 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { LanguageService } from '../../services/language/language.service';
 import { Subscription } from 'rxjs';
 import { FetchAPIService } from '../../services/fetch/fetch-api.service';
 import { Project } from '../../interfaces/Project.interface';
 import { ProjectComponent } from '../../components/project/project.component';
-import { ModalStatusService } from '../../services/modal/modal-status.service';
 import { ModalComponent } from '../../components/modal/modal.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Skill } from '../../interfaces/Skill.inteface';
@@ -17,9 +16,9 @@ import { Skill } from '../../interfaces/Skill.inteface';
   styleUrl: './projectsSection.component.scss'
 })
 export class ProjectsSectionComponent {
+@ViewChild(ModalComponent) modal!: ElementRef;
   languageService: LanguageService = inject(LanguageService);
   fetchAPIService: FetchAPIService = inject(FetchAPIService);
-  modalStatusService: ModalStatusService = inject(ModalStatusService);
 
   private languageSubcription!: Subscription;
   titleText: string = '';
@@ -27,7 +26,6 @@ export class ProjectsSectionComponent {
   private loginSubscription!: Subscription;
   isLogin: boolean = false;
 
-  private modalSubscription!: Subscription;
   isModalOpen: boolean = false;
 
   projects: Project[] = [];
@@ -50,9 +48,6 @@ export class ProjectsSectionComponent {
       this.loginSubscription = this.fetchAPIService.isLogin$.subscribe((log) => {
         this.isLogin = log;
       })
-      this.modalSubscription = this.modalStatusService.isOpen$.subscribe((modalStatus) => {
-        this.isModalOpen = modalStatus;
-      })
       this.projects = this.fetchAPIService.getProjects();
       this.skills = this.fetchAPIService.getSkills();
   }
@@ -60,11 +55,6 @@ export class ProjectsSectionComponent {
   ngOnDestroy(): void {
       this.languageSubcription.unsubscribe();
       this.loginSubscription.unsubscribe();
-      this.modalSubscription.unsubscribe();
-  }
-
-  modify() {
-    this.modalStatusService.toggleOpen();
   }
 
   addSkill(skillId: string): void {

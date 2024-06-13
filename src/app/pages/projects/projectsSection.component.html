@@ -3,7 +3,7 @@
         <h1 class="title">
             {{titleText}}
             @if (isLogin) {
-                <button class="modifyButton" (click)="modify()">Modifier</button>
+                <button class="modifyButton" (click)="isModalOpen = true">Modifier</button>
             }
         </h1>
         <span class="separator"></span>
@@ -14,7 +14,7 @@
         }
     </div>
     @if (isModalOpen) {
-        <app-modal>
+        <app-modal [isOpen]="isModalOpen" (onClick)="isModalOpen = false">
             <h2 class="title">Ajouter un projet</h2>
 
             <form [formGroup]="projectForm" (ngSubmit)="onSubmit($event)">
