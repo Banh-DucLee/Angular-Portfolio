@@ -1,38 +1,41 @@
 @import '../../styles/variables/color.scss';
 
-.modal-container {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 105vh;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-
-    .modal {
-        aspect-ratio: 0.75;
-        width: auto;
-        height: 75%;
-        background-color: $background-color;
-        border-radius: 25px;
-        padding: 20px;
+:host {
+    z-index: 10;
+    .modal-container {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 105vh;
         box-sizing: border-box;
         display: flex;
-        flex-direction: column;
         align-items: center;
-
-        ng-icon {
-            scale: 2;
-            cursor: pointer;
-            align-self: flex-end;
-        }
-
-        ng-content {
-            flex: 1;
+        justify-content: center;
+        box-sizing: border-box;
+    
+        .modal {
+            aspect-ratio: 0.75;
+            width: auto;
+            height: 75%;
+            background-color: $background-color;
+            border-radius: 25px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            ng-icon {
+                scale: 2;
+                cursor: pointer;
+                align-self: flex-end;
+            }
+    
+            ng-content {
+                flex: 1;
+            }
         }
     }
 }

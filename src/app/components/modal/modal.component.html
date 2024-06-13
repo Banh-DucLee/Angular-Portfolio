@@ -1,6 +1,8 @@
-<aside class="modal-container">
-    <div class="modal">
-        <ng-icon name="matCloseRound" (click)="modalStatusService.toggleOpen()"></ng-icon>
-        <ng-content></ng-content>
-    </div>
-</aside>
+@if (isOpen) {
+    <aside class="modal-container">
+        <div class="modal">
+            <ng-icon name="matCloseRound" (click)="handleClick()"></ng-icon>
+            <ng-content></ng-content>
+        </div>
+    </aside>
+}

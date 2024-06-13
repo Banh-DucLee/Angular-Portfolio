@@ -1,8 +1,6 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { matCloseRound } from '@ng-icons/material-icons/round';
-import { ModalStatusService } from '../../services/modal/modal-status.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-modal',
@@ -12,23 +10,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss'
 })
-export class ModalComponent implements OnInit, OnDestroy {
-  modalStatusService: ModalStatusService = inject(ModalStatusService);
+export class ModalComponent {
+@Input() isOpen: boolean = false;
 
-  private modalSubscription!: Subscription;
-  isModalOpen: boolean = false;
+@Output() onClick = new EventEmitter<void>();
 
-  ngOnInit(): void {
-      this.modalSubscription = this.modalStatusService.isOpen$.subscribe((modalStatus) => {
-        this.isModalOpen = modalStatus;
-      })
-  }
-
-  ngOnDestroy(): void {
-      this.modalSubscription.unsubscribe();
-  }
-
-  goTo(path: string) {
-
+  handleClick(): void {
+    this.onClick.emit();
   }
 }
