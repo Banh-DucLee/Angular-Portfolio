@@ -1,0 +1,31 @@
+@import '../../styles/variables/color.scss';
+
+a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $background-color;
+    aspect-ratio: 1;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 25px;
+    text-decoration: none;
+
+    img {
+        aspect-ratio: 1;
+        width: 75px;
+        height: auto;
+    }
+
+    h3 {
+        text-decoration: none;
+        color: $headline-color;
+        opacity: 0;
+        transition: opacity .2s ease;
+    }
+
+    &:hover h3{
+        opacity: 1;
+    }
+}
