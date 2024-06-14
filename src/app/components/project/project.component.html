@@ -3,7 +3,7 @@
         <ng-icon name="matCloseRound" (click)="fetchAPIService.deleteSkill(project._id)"></ng-icon>
     }
     <article class="project-card">
-        <img [src]="project.imageUrl">
+        <img [src]="project.imageUrl" alt="Photo {{project.title}}">
         <div class="project-info">
             <h3 class="project-title"></h3>
         </div>
