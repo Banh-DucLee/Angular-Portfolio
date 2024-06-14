@@ -17,7 +17,7 @@
                     }
                 </div>
             </div>
-            <button type="button" class="downloadButton">{{downloadText}}</button>
+            <button type="button" (click)="downloadResume()" class="downloadButton">{{downloadText}}</button>
         </div>
     </article>
     <div class="image-container">
@@ -51,16 +51,18 @@
                 </div>
                 <div class="image-container">
                     <label for="image">Image</label>
-                    <input type="file" (change)="onFileSocialChange($event)">
+                    <input type="file" id="image" (change)="onFileSocialChange($event)">
                 </div>
                 <button type="submit">Ajouter</button>
             </form>
         </div>
         <div class="resume-form">
             <h2 class="title">Modifier le CV</h2>
-            <label for="resume">CV</label>
-            <input type="file" (change)="onFileResumeChange($event)">
-            <button type="button" (click)="onSubmitResume($event)">Valider</button>
+            <form [formGroup]="resumeForm" (ngSubmit)="onSubmitResume($event)">
+                <label for="resume">CV</label>
+                <input type="file" id="resume" (change)="onFileResumeChange($event)">
+                <button type="submit">Valider</button>
+            </form>
         </div>
     </app-modal>
 </section>

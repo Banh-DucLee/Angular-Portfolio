@@ -124,6 +124,6 @@ section {
     }
 
     @media (width <= $breakpoint-mobile) {
-        height: 210vh;
+        height: fit-content;
     }
 }

@@ -148,6 +148,7 @@ export class FetchAPIService implements OnInit {
   }
 
   public uploadResume(resume: File): void {
+    console.log('Request sent');
     const endpoint = '/resume';
     const formData: FormData = new FormData();
     formData.append('resume', resume, resume.name);
@@ -155,7 +156,14 @@ export class FetchAPIService implements OnInit {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     
-    this.http.post(this.url + endpoint, formData, { headers: headers});
+    this.http.post(this.url + endpoint, formData, { headers: headers}).subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
 
   public getResume(): Observable<Blob> {

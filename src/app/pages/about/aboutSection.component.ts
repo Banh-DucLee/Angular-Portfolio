@@ -53,6 +53,8 @@ export class AboutSectionComponent implements OnInit, OnDestroy {
 
   socials: Social[] = [];
 
+  resumeForm: FormGroup = new FormGroup({});
+
   resumeFile: File | null = null;
 
   ngOnInit(): void {
@@ -112,12 +114,28 @@ export class AboutSectionComponent implements OnInit, OnDestroy {
   }
 
   onSubmitResume(event: Event) {
+    console.log('File submitted');
     event.preventDefault();
+    console.log('prevent default');
     this.fetchAPIService.uploadResume(this.resumeFile!);
+    console.log('request sent');
   }
 
   onFileResumeChange(event: Event) {
     const file = (event.target as HTMLInputElement).files![0];
     this.resumeFile = file;
+    console.log(this.resumeFile);
+  }
+
+  downloadResume() {
+    this.fetchAPIService.getResume().subscribe((response: Blob) => {
+      const url = window.URL.createObjectURL(response);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'CV_Duc-Lee_Banh.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
   }
 }
