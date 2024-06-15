@@ -74,7 +74,9 @@ export class AboutSectionComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if(this.languageSubcription) {
       this.languageSubcription.unsubscribe();
+    }
   }
 
   onSubmitAbout(event: Event) {
