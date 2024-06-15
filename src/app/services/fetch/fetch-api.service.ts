@@ -12,7 +12,7 @@ import { Contact } from '../../interfaces/Contact.interface';
   providedIn: 'root'
 })
 export class FetchAPIService implements OnInit {
-  private url = 'http://localhost:3333/api';
+  private url = 'https://express-portfolio-api-duclee-banh.vercel.app/api';
   private isLogin = new BehaviorSubject<boolean>(false);
   public isLogin$ = this.isLogin.asObservable();
   constructor(private http: HttpClient, private router: Router) { }
