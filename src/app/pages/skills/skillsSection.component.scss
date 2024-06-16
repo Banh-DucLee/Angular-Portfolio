@@ -33,7 +33,7 @@ section {
             
             h2 {
                 text-align: center;
-                font-size: clamp(1.25rem, 1.118rem + 0.5634vw, 1.625rem);
+                font-size: 26px;
                 font-weight: 700;
             }
 
@@ -55,7 +55,13 @@ section {
 
                 @media (width <= $breakpoint-mobile) {
                     grid-template-columns: repeat(2, 1fr);
+                    height: fit-content;
+                    padding: 15px;
                 }
+            }
+
+            @media (width <= $breakpoint-mobile) {
+                height: fit-content;
             }
         }
 
@@ -80,7 +86,7 @@ section {
         @media (width <= $breakpoint-mobile) {
             display: flex;
             flex-direction: column;
-
+            padding: 50px 0 0 0;
             article {
                 width: 100%;
                 height: fit-content;

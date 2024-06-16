@@ -12,6 +12,10 @@
     backdrop-filter: blur( 10px );
     -webkit-backdrop-filter: blur( 10px );
 
+    @media (width <= $breakpoint-mobile) {
+        height: 50px;
+    }
+
     header {
         z-index: 1;
         box-sizing: border-box;
@@ -108,12 +112,13 @@
                         align-items: flex-start;
                         justify-content: space-evenly;
                         gap: 50px;
+                        padding-left: clamp(1.25rem, -0.2696rem + 6.5359vw, 2.5rem);
                         li {
                             display: flex;
                             flex-direction: column;
                             a {
                                 font-family: 'Bebas Neue', sans-serif;
-                                font-size: 40px;
+                                font-size: clamp(2.1875rem, 1.8076rem + 1.634vw, 2.5rem);
                                 color: $headline-color;
                                 text-decoration: none;
                                 text-shadow: 2px 2px 2px rgba($dark-background-color, 0.2);
