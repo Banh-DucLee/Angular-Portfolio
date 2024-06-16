@@ -12,6 +12,10 @@
     backdrop-filter: blur( 10px );
     -webkit-backdrop-filter: blur( 10px );
 
+    @media (width <= $breakpoint-mobile) {
+        height: 50px;
+    }
+
     header {
         z-index: 1;
         box-sizing: border-box;
