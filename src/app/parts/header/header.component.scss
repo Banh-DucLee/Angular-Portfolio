@@ -97,6 +97,7 @@
                 position: relative;
                 height: 100%;
                 width: 60%;
+                max-width: 300px;
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
@@ -112,7 +113,7 @@
                         align-items: flex-start;
                         justify-content: space-evenly;
                         gap: 50px;
-                        padding-left: clamp(1.25rem, -0.2696rem + 6.5359vw, 2.5rem);
+                        padding-left: clamp(1.25rem, -4.7115rem + 25.641vw, 2.5rem);
                         li {
                             display: flex;
                             flex-direction: column;

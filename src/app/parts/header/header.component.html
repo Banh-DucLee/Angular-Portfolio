@@ -33,19 +33,19 @@
             <nav class="nav-container">
                 <ul>
                     <li>
-                        <a href="/home#" [class.active]="isActive('/home')">{{homeText}}</a>
+                        <a href="/home#" [class.active]="isActive('/home')" (click)="toggleOpen()">{{homeText}}</a>
                     </li>
                     <li>
-                        <a href="/home#about" [class.active]="isActive('/home#about')">{{aboutText}}</a>
+                        <a href="/home#about" [class.active]="isActive('/home#about')" (click)="toggleOpen()">{{aboutText}}</a>
                     </li>
                     <li>
-                        <a href="/home#skills" [class.active]="isActive('/home#skills')">{{skillsText}}</a>
+                        <a href="/home#skills" [class.active]="isActive('/home#skills')" (click)="toggleOpen()">{{skillsText}}</a>
                     </li>
                     <li>
-                        <a href="/home#projects" [class.active]="isActive('/home#projects')">{{projectsText}}</a>
+                        <a href="/home#projects" [class.active]="isActive('/home#projects')" (click)="toggleOpen()">{{projectsText}}</a>
                     </li>
                     <li>
-                        <a href="/home#contact" [class.active]="isActive('/home#contact')">{{contactText}}</a>
+                        <a href="/home#contact" [class.active]="isActive('/home#contact')" (click)="toggleOpen()">{{contactText}}</a>
                     </li>
                 </ul>
             </nav>
