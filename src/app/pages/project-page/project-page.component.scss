@@ -19,7 +19,7 @@
         backdrop-filter: blur( 10px );
         -webkit-backdrop-filter: blur( 10px );
         border-radius: 15px;
-        overflow-y: scroll;
+        overflow: hidden;
         
         img {
             box-sizing: border-box;
@@ -64,6 +64,13 @@
         h1, h2, p {
             text-align: center;
             margin: 0;
+        }
+
+        h2 {
+
+            @media (width <= $breakpoint-mobile) {
+                font-size: 30px;
+            }
         }
 
         p { 
@@ -121,5 +128,9 @@
     @media (width < $breakpoint-tablet) {
         flex-direction: column-reverse;
         height: fit-content;
+    }
+
+    @media (width <= $breakpoint-mobile) {
+        padding: 55px 15px 15px 15px;
     }
 }
