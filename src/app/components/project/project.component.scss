@@ -1,6 +1,9 @@
+@import '../../styles/variables/color.scss';
+
 .container {
     display: block;
     text-decoration: none;
+    position: relative;
 
     .project-card {
         aspect-ratio: 16/11;
@@ -19,7 +22,22 @@
             width: auto;
             height: auto;
             object-fit: cover;
-            flex-grow: 1;
+        }
+
+        .project-info {
+            position: absolute;
+            display: block;
+            bottom: 0;
+            height: fit-content;
+            width: 100%;
+            background: linear-gradient(0, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            padding-top: 40px;
+
+            h1 {
+                margin: 0 20px;
+                color: $dark-headline-color;
+                text-align: start;
+            }
         }
     }
 }
