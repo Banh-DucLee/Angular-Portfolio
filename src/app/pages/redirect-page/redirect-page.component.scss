@@ -1,0 +1,51 @@
+@import '../../styles/variables/color.scss';
+
+main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+        width: 40%;
+        min-width: 400px;
+        height: 50%;
+        max-height: fit-content;
+        padding: 30px 60px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        gap: 30px;
+        align-items: center;
+        background: rgba( 255, 255, 255, 0 );
+        box-shadow: 0 8px 20px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 10px );
+        -webkit-backdrop-filter: blur( 10px );
+
+        h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 300;
+            font-size: 30px;
+            text-align: center;
+            margin: 0;
+        }
+
+        p {            
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            text-align: center;
+            margin: 0;
+        }
+
+        button {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 500;
+            border: 2px solid $stroke-color;
+            background: none;
+            padding: 5px 10px;
+            font-size: 20px;
+        }
+    }
+}
